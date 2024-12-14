@@ -3,20 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -26,14 +20,10 @@
                 android:layout_marginStart="20dp"
                 android:textSize="20sp"
                 android:text="姓名:"/>
-
-
             <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
-
-
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,7 +32,6 @@
                 android:id="@+id/s_music"
                 android:text="背景音乐"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,13 +41,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="尹锡悦下台几成定局，对中韩关系有何影响"/>
+                android:textSize="20sp"
+
+                android:text="漫评美边喊停火边拱火：“两副面孔”"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/news"/>
+                android:src="@mipmap/news_th"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,30 +60,88 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:padding="20dp"
-                    android:text="12月3日至今，韩国政局走向如同过山车一般，先是总统尹锡悦“戒严未遂”，后有执政党否决弹劾。此前，尹锡悦度过了第一轮弹劾危机，但也不得不把治国理政和本人去留问题交给总理和执政党。就在昨天（10日），韩国国会通过要求迅速逮捕总统尹锡悦的决议案，表决通过了要求调查总统尹锡悦的“内乱常设特检法”。"/>
-
-
+                    android:textSize="14sp"
+                    android:text="近日，据英国《金融时报》爆料，美国总统拜登已初步批准向以色列出售价值6.8亿美元的武器，军售内容包括向以色列提供更多精确制导的常规炸弹。
+而就在不久前，拜登才对以色列和黎巴嫩真主党达成停火协议发表祝贺，并承诺将提出一项新提议来确保加沙停火。
+一面呼吁停火，一面却不停输送武器，美方虚伪的“两副面孔”暴露无遗。"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="张玉"/>
-
+                    android:textSize="14sp"
+                    android:text="人民网：陈籽"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="12-11"/>
+                    android:textSize="14sp"
+                    android:text="2024年12月05日"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+
+                android:text="漫评美对华半导体出口管制：“卡住了”"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:src="@mipmap/news_bdt"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:padding="20dp"
+                    android:textSize="14sp"
+                    android:text="近日，美方发布了对华半导体出口管制措施，进一步加严对半导体制造设备、存储芯片等物项的对华出口管制，并将136家中国实体增列至出口管制实体清单。
+这完全是典型的经济胁迫。近年来，美方不断泛化国家安全概念，打着维护所谓“国家安全”的幌子，滥用出口管制措施，毫无原则底线实行单边霸凌行径。
+美方这一做法严重破坏国际经贸秩序，扰乱全球产供链稳定，既损人又不利己。"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:textSize="14sp"
+                    android:text="人民网：陈籽"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textSize="14sp"
+                    android:text="2024年12月12日"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -104,13 +153,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="特朗普公开嘲讽特鲁多：加拿大州州长，期待再次相见"/>
+                android:textSize="20sp"
+                android:padding="10dp"
+
+                android:text="漫评美国大发战争财:“加急赚钱”"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+
                 android:layout_gravity="center"
-                android:src="@mipmap/news_trpu"/>
+                android:src="@mipmap/news_mp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,85 +174,29 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:padding="20dp"
-                    android:text="特鲁多当地时间11月29日突访海湖庄园，和特朗普面对面讨论两国关系。据美媒此前披露，特朗普在会谈中虽然表现得非常热情友好，但他提出的要求非常直接，坚决要求加拿大想办法解决边境移民和贸易逆差问题。特朗普还开玩笑说，如果加拿大解决不了问题，也许加拿大可以成为美国第51个州，特鲁多可以当州长。"/>
+                    android:textSize="14sp"
+                    android:text="11月1日，美国政府才宣布将再向乌克兰提供价值4.25亿美元的军事援助.源源不断的武器输送意味着冲突会继续，更多无辜的人会丧生，却也代表着美国军火商又将大赚一笔。美国的军工复合体并不希望和平真正实现。为一己私利不断拱火冲突，他们才是世界和平的最大破坏者。"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="王恺雯"/>
-
+                    android:textSize="14sp"
+                    android:text="人民网：陈籽"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="12-11"/>
-
+                    android:textSize="14sp"
+                    android:text="2024年11月14日"/>
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="不锈钢盲道遭脱口秀吐槽“瞎滑”，深圳福田区长回应"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/news_sz"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:padding="20dp"
-                    android:text="12月10日，深圳市福田区委副书记、区长周江涛表示，对于市民反映问题的回应和处理，不单单要有温度，还要有速度，不能够只是态度好，不办事。"/>
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:text="王恺雯"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="12-11"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>
