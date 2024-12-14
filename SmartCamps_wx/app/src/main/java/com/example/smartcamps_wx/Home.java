@@ -1,5 +1,7 @@
 package com.example.smartcamps_wx;
 
+import static com.example.smartcamps_wx.Register.KEY3;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,7 +17,7 @@ import com.example.smartcamps_wx.bgmMusicService;
 public class Home extends AppCompatActivity {
     Switch switch_music;
     TextView textView;
-    static final String KEY3="useryhm";
+    //static final String KEY3="useryhm";
     SharedPreferences preferences;
 
     @Override
@@ -25,8 +27,9 @@ public class Home extends AppCompatActivity {
         textView=findViewById(R.id.name);
         preferences=getSharedPreferences("userinfo",AppCompatActivity.MODE_PRIVATE);
 
-           /* String name=preferences.getString(KEY3,"error");
-            textView.setText(name);*/
+            String name=textView.getText().toString();
+            name+=preferences.getString(KEY3,"error");
+            textView.setText(name);
 
 
         switch_music=findViewById(R.id.s_music);
