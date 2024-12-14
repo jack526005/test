@@ -1,5 +1,8 @@
 package com.example.smartcamps_wx;
 
+import static com.example.smartcamps_wx.Register.KEY1;
+import static com.example.smartcamps_wx.Register.KEY2;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn2;
     EditText ed1,ed2;
     SharedPreferences preferences;
-    static final String KEY1="userName",KEY2="userPass";
+    //static final String KEY1="userID",KEY2="userPass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

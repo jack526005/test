@@ -26,7 +26,7 @@ public class Register extends AppCompatActivity {
     RadioGroup rg;
     RadioButton rb_male,rb_female;
     String msg,sex;
-    static final String KEY1="userName",KEY2="userPass",KEY3="useryhm";
+    static final String KEY1="userID",KEY2="userPass",KEY3="useryhm",KEY4="userbirth",KEY5="userSex";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
@@ -106,15 +106,13 @@ public class Register extends AppCompatActivity {
                         editor.putString(KEY1,edid.getText().toString());
                         editor.putString(KEY2,edpwd.getText().toString());
                         editor.putString(KEY3,edname.getText().toString());
+                        editor.putString(KEY4,edbirth.getText().toString());
+                        editor.putString(KEY5,sex);
                         if (editor.commit()){
                             System.out.println("11111111");
                             Intent intent = new Intent(Register.this, MainActivity.class);
                             startActivity(intent);
                         }
-
-
-
-
                     }
                 });
 
