@@ -11,8 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.smartcamps_wx.R;
-import com.example.smartcamps_wx.bgmMusicService;
+
 
 public class Home extends AppCompatActivity {
     Switch switch_music;

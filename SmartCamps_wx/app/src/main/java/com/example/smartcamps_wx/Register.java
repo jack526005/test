@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,9 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.example.smartcamps_wx.R;
 
 public class Register extends AppCompatActivity {
     Button btn_set;
