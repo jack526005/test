@@ -17,7 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 public class Register extends AppCompatActivity {
     Button btn_set;
-    Button btn_login;
+    Button btn_RE;
     EditText edbirth,edname,edid,edpwd;
     RadioGroup rg;
     RadioButton rb_male,rb_female;
@@ -37,7 +37,7 @@ public class Register extends AppCompatActivity {
         rg=findViewById(R.id.rg1);
         rb_male=findViewById(R.id.sex_m);
         rb_female=findViewById(R.id.sex_f);
-        btn_login=findViewById(R.id.btn_register);
+        btn_RE=findViewById(R.id.btn_register);
         preferences=getSharedPreferences("userinfo",AppCompatActivity.MODE_PRIVATE);
         editor=preferences.edit();
 
@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        btn_RE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 msg="";
