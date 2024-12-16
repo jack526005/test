@@ -10,9 +10,6 @@ import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-
-
-
 public class Home extends AppCompatActivity {
     Switch switch_music;
     TextView textView;
