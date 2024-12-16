@@ -15,20 +15,16 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-
 public class Register extends AppCompatActivity {
     Button btn_set;
     Button btn_login;
     EditText edbirth,edname,edid,edpwd;
     RadioGroup rg;
     RadioButton rb_male,rb_female;
-    String msg,sex;
+    String msg,sex="男";
     static final String KEY1="userID",KEY2="userPass",KEY3="useryhm",KEY4="userbirth",KEY5="userSex";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,21 +47,14 @@ public class Register extends AppCompatActivity {
 
                 String date = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
                 edbirth.setText(date);
-
-
-
             }
         };
-
-
         btn_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(Register.this, mDateSetListener, 2024, 11, 11).show();
             }
         });
-
-
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -80,8 +69,6 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
-
-
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,9 +78,6 @@ public class Register extends AppCompatActivity {
                 msg+="生日："+edbirth.getText().toString()+"\n";
                 msg+="账号："+edid.getText().toString()+"\n";
                 msg+="密码："+edpwd.getText().toString()+"\n";
-
-
-
                 System.out.println(msg);
                 AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
                 builder.setTitle("注册界面");
@@ -117,10 +101,6 @@ public class Register extends AppCompatActivity {
                 builder.setNegativeButton("取消", null);
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
-
-
-
             }
         });
     }

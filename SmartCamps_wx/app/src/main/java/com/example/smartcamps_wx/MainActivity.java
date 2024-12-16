@@ -14,9 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn1;
-    Button btn2;
-    EditText ed1,ed2;
+    Button btn_re;
+    Button btn_Login;
+    EditText ed_ID,ed_pass;
     SharedPreferences preferences;
     //static final String KEY1="userID",KEY2="userPass";
 
@@ -24,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn1=findViewById(R.id.btn_register);
-        btn2=findViewById(R.id.btn_login);
-        ed1=findViewById(R.id.et_account);
-        ed2=findViewById(R.id.et_password);
+        btn_re=findViewById(R.id.btn_register);
+        btn_Login=findViewById(R.id.btn_login);
+        ed_ID=findViewById(R.id.et_account);
+        ed_pass=findViewById(R.id.et_password);
         preferences=getSharedPreferences("userinfo",AppCompatActivity.MODE_PRIVATE);
-        btn1.setOnClickListener(new View.OnClickListener() {
+
+        btn_re.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Register.class);
@@ -37,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String truename=preferences.getString(KEY1,"error");
                 String truepwd=preferences.getString(KEY2,"error");
-                String name=ed1.getText().toString();
-                String pwd=ed2.getText().toString();
+                String name=ed_ID.getText().toString();
+                String pwd=ed_pass.getText().toString();
                 if (truename.equals(name)&&truepwd.equals(pwd)){
                     System.out.println("正确登录");
                     Intent intent=new Intent(MainActivity.this,Home.class);
