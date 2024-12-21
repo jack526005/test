@@ -91,8 +91,7 @@ public class Register extends AppCompatActivity {
                         editor.putString(KEY4,edbirth.getText().toString());
                         editor.putString(KEY5,sex);
                         if (editor.commit()){
-                            System.out.println("11111111");
-                            Intent intent = new Intent(Register.this, MainActivity.class);
+                            Intent intent = new Intent(Register.this, Login.class);
                             startActivity(intent);
                         }
                     }
