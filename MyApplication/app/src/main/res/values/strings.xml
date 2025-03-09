@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">My Application</string>
-    <string-array name="songlist">
-        <item>双笙</item>
-        <item>坏女孩</item>
-        <item>春泥</item>
-    </string-array>
-</resources>
