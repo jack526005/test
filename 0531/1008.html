@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        输入性别
+        <label>
+            <input checked name="gender" type="radio" /> 男
+        </label>
+        <label>
+            <input  name="gender" type="radio" /> 女
+        </label>
+
+        <div>
+            输入出生年月 <input type="date" id="birthDate" />
+        </div>
+        <button onclick="calResult()">计算</button>        
+        <div id="result"></div>
+
+        <script>
+            function calResult() {
+                // 获取性别 出生年月
+                let genders = document.getElementsByName('gender')                
+                let birth = document.getElementById('birthDate')
+                let bir = new Date(birth.value) //字符串转化为日期对象   
+                let year = bir.getFullYear(),
+                    month = bir.getMonth() + 1   
+
+                let gender = genders[0].checked ? '男' : '女'
+                let result;
+                if (gender == '男') {
+                    if (year >= 1965 && year <= 1976) {
+                        result = (year - 1965) * 3 + Math.ceil(month / 4)
+                    } else if (year > 1976) {
+                        result = 36
+                    } else
+                        result = 0
+                } else {
+                    if (year >= 1965 && year <= 1976) {
+                        result = (year - 1965) * 2 + Math.ceil(month / 4)
+                    } else if (year > 1976) {
+                        result = 30
+                    } else
+                        result = 0
+                }
+                
+
+                //显示结果
+                let resultNode = document.querySelector('#result')
+                let num1=60
+                let num2=Math.floor(result/12)
+                let sum1=num1+num2
+                let sum2=result%12
+                
+                resultNode.innerHTML = '退休时间是：60岁 '+result+' 个月，改革后法定退休年龄：'+sum1+'岁'+sum2+'个月'+year+'您将于2033年11月份退休'
+                
+            }
+        </script>
+    </body>
+</html>

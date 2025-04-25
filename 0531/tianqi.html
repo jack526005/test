@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+						margin: 0;
+						padding: 0;
+					}
+		
+					.icon {				
+						width: 29px;
+						height: 29px;
+						background: url(weather_icon_b.png);				
+						background-size: 350px auto;
+					}
+		
+					.icon-yin {
+						background-position: -57px 0;
+					}
+		
+					.icon-yun {
+						background-position: -26px 0;
+					}
+		
+					.icon-qing {
+						background-position: 0 0;
+					}
+						
+					.icon-xue
+					{
+						background-position: 177px 0;
+					}
+		
+					#weather-list {
+						margin: 20px auto;
+						width: 900px;
+						display: flex;
+						justify-content: space-between;
+						flex-wrap: wrap;
+					}
+		
+					.list-item {
+						width: 150px;
+					}
+	</style>
+	<body>
+		<div >输入城市：<input   id="city" value="" />
+		<button>获取天气</button>
+		<div id="weather-list">
+			
+		</div>
+	</div>
+		
+		<script>
+			document.querySelector('button').onclick = function() {
+				var xhr = new XMLHttpRequest();
+				var city=document.querySelector('#city').value
+				
+				var url = 'http://v1.yiketianqi.com/free/month?unescape=1&appid=21246243&appsecret=1EWg04a7&city='+city
+				xhr.open('get', url)
+				xhr.send(null)
+				xhr.onreadystatechange = function() { //等待数据
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						console.log(JSON.parse(xhr.responseText));
+						let data = JSON.parse(xhr.responseText).data
+						let weather_list=document.querySelector('#weather-list')
+						let html=''
+						for (let d of data) {
+							console.log(d);
+							html+=`<div class="list-item">
+									<div class="time">${d.date}</div>
+									<div class="icon icon-${d.wea_day_img} wea-img-day"></div>
+									<div class="icon icon-${d.wea_night_img} wea-img-night"></div>
+									<div class="wea-text">${d.wea}</div>
+									<div class="wea-wendu">${d.tem_day+"-"+d.tem_night+'摄氏度'}</div>				
+								</div>	 `
+						}
+						weather_list.innerHTML=html
+						
+					}
+				}
+
+			}
+		</script>
+	</body>
+</html>

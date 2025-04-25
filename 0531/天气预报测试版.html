@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+         body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #edf2f7;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+</style>
+<body>
+  <input type="text" id="city" placeholder="请输入城市名" value="芜湖" />
+  <button onclick="sbm()">查询</button>
+  <h1 class="text-2xl font-bold mb-4">未来一周天气预报</h1>
+  <table>
+      <thead id="table">
+          <tr>
+              <th>时间</th>
+              <th>空气质量</th>
+              <th>温度</th>
+              <th>天气状况</th>
+              <th>风力</th>
+          </tr>
+      </thead>
+
+      
+  </table>
+</body>
+<script>
+let chengsh=''
+    function sbm(){
+        let city=document.getElementById('city');
+        console.log(city.value)
+        chengsh=city.value;
+        
+
+    }
+
+
+ 
+    
+    
+  
+  const xhr=new XMLHttpRequest();//原生AJAX请求对象
+
+xhr.open("GET","https://v2.api-m.com/api/weather?city="+chengshi);//true表示异步请求
+
+
+xhr.send()
+xhr.onreadystatechange=function(){
+  if(xhr.readyState==4 && xhr.status==200){
+    //console.log(xhr.responseText);//返回的json字符串
+    const response=JSON.parse(xhr.responseText);
+    console.log(response.data.data);//解析json字符串
+
+let table=document.getElementById('table');
+  let tb=''
+    for(var i=0;i<6;i++){
+    tb+=`<tr>
+              <th>${response.data.data[i].date}</th>
+              <th>${response.data.data[i].air_quality}</th>
+              <th>${response.data.data[i].temperature}</th>
+              <th>${response.data.data[i].weather}</th>
+              <th>${response.data.data[i].wind}</th>
+          </tr>`
+
+  }
+  table.innerHTML+=tb;
+  
+
+
+
+  }
+  }
+  
+  
+    
+ 
+
+
+</script>
+</html>

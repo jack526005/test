@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="axios.min.js"></script>
+<script>
+    //axios.get('https://v2.api-m.com/api/meinv')
+    (async ()=>{
+        const response = await axios.get('https://v2.api-m.com/api/meinv')
+        console.log(response.data.data)
+    })()
+   
+</script>
+</html>

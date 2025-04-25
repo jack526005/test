@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: large;
+        }
+     
+</style>
+<body>
+    <img src="京东logo.png" alt="" width="50px">
+
+    
+    
+    
+    <table id="myTable">
+     
+    </table>
+    
+    <script>
+        
+        let table = document.querySelector('table');
+        let tb = `<tr>
+            <td><input type="checkbox" >全选</td>
+            <td>商品</td>
+           
+            <td>单价</td>
+            <td>数量</td>
+            <td>总计</td>
+        </tr>`;
+        let proct = [
+            {name: 'opoo', price: 6999, count: 2,image:'1.png'},
+            {name: 'vivo', price: 2999, count: 3},
+            {name: 'Redmi', price: 2499, count: 2}
+        ]
+      
+        for(let i = 0; i < proct.length; i++) {
+            let total = proct[i].price * proct[i].count;
+          
+            tb += `<tr>
+                <td><input type="checkbox"></td>
+               
+                <td>${proct[i].name}</td>
+                <td>${proct[i].price}</td>
+                <td><button>-</button>${proct[i].count}<button>+</button></td>
+                <td>${total}</td>
+            </tr>`
+        }
+
+        table.innerHTML = tb;
+        table.innerHTML +=`<tr>
+            <td><input type="checkbox" >全选</td>
+            <td>删除选中商品 </td>
+            <td>移到关注</td>
+            <td>清理购物车</td>
+            <td><button>结算</button></td>
+        </tr>` 
+    </script>
+    
+</body>
+</html>
+

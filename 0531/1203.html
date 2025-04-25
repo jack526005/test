@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+ 
+			*{ margin:0;  padding:0;}
+			table{
+				width: 600px;
+				margin: 20px auto;
+			}
+			#summary{
+				width: 600px !important;
+				margin: 20px auto;
+			}
+			table  td{
+				text-align: center;
+			}
+ 
+			table tr th{
+				background-color: red
+			}
+ 
+			table tr:nth-child(even){
+				background-color: skyblue
+			}
+		#summary{
+			text-align: right;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<table cellpadding="0" cellspacing="0">           
+		</table>
+		<div id="summary">总计:<span id="total">0.0</span>元</div>
+ 
+		<script>
+			let products = [{
+				name: 'vivo手机',
+				unitprice: 2999,
+				count: 2
+			}, {
+				name: 'oppo手机',
+				unitprice: 3999,
+				count: 3
+			},{
+				name: 'huawei手机',
+				unitprice: 6999,
+				count: 2
+			}]
+ 
+			let table = document.querySelector('table')
+			let htmlstr = `<tr>
+					<th><label><input  id="allcheck" type="checkbox">全选</label></th>
+					<th>商品名</th>
+					<th>单价</th>
+					<th>数量</th>
+					<th>合计</th>
+			   </tr>`
+			 
+			for (let index in products) {
+				htmlstr +=  `<tr>
+						<td><input type="checkbox"></td>
+						<td>${products[index].name} </td>
+						<td>${products[index].unitprice}</td>
+						<td><input type="number"  value="${products[index].count}" /></td>
+						<td>${products[index].unitprice * products[index].count}</td>
+					</tr>`
+			}
+ 
+			table.innerHTML += htmlstr
+ 
+ 
+			//实现全选
+			let ac = document.getElementById('allcheck')
+			// 事件属性
+			ac.onclick　 = function(){
+				
+				//商品列表中的复选框
+				let scs = document.querySelectorAll('table tr td input')
+ 
+				for (let sc of scs) {
+					sc.checked = ac.checked
+					calTotal()
+					
+				}
+			}
+		
+					
+					
+				
+
+			let scs =document.querySelectorAll('table tr td input[type=checkbox]')
+			function calTotal(){
+				total=0.0
+				scs.forEach(sc=>{
+					if(sc.checked){
+						let unitprice=sc.parentNode.parentNode.children[2].textContent
+						let count =sc.parentNode.parentNode.children[3].firstElementChild.value
+						total+=count*unitprice
+					}
+				})
+				console.log(total)
+				document.querySelector('#total').textContent=total
+			}
+				
+			scs.forEach(sc=>{
+					
+		       sc.onclick=function(){
+					calTotal()
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+				
+			function MyArray(arr){
+				this.arr=arr
+			}
+			MyArray.prototype.push=function(value){
+				this.arr[this.arr.length]=value
+				return this.arr.length
+				
+			}
+			MyArray.prototype.pop=function(){
+				let lastElement
+				if(this.arr.length>0){
+					lastElement=this.arr[this.arr.length-1]
+					this.arr.length--
+					
+				}
+				return lastElement
+			}
+			
+			MyArray.prototype.unshift = function(value) {
+   
+            for (let i = this.arr.length; i > 0; i--) {
+                this.arr[i] = this.arr[i - 1];
+               }
+              this.arr[0] = value;
+              return this.arr.length;
+            }
+
+			MyArray.prototype.shift=function(){
+				if(this.arr.length==0){
+					return null
+				}
+				let firstElement=this.arr[0]
+				for (let i = 1; i < this.arr.length; i++) {
+                this.arr[i-1] = this.arr[i];
+               }
+			   this.arr.length--
+			   return firstElement
+			}
+			let myarray=new MyArray([1,2,3])
+		</script>
+	</body>
+</html>

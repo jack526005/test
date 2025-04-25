@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Page</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <video src="https://videos.xxapi.cn/cd30d64409117cc0.mp4" controls id="sr" autoplay loop muted class="w-full max-w-3xl rounded-md shadow-md mb-4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="window.location.reload();" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out">
+        <i class="fas fa-sync-alt mr-2"></i>刷新
+    </button>
+    <script>
+        const video = document.getElementById('sr');
+        let hasUserInteracted = false;
+        let startY = 0;
+        const threshold = 50;
+
+        // 处理移动端触摸事件
+        document.addEventListener('touchstart', function (e) {
+            if (!hasUserInteracted) {
+                video.play().catch(() => {});
+                hasUserInteracted = true;
+            }
+            startY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', function (e) {
+            const endY = e.changedTouches[0].clientY;
+            const deltaY = startY - endY;
+            if (deltaY > threshold) {
+                window.location.reload();
+            }
+        });
+
+        // 处理桌面端鼠标滚轮事件
+        document.addEventListener('wheel', function (e) {
+            if (e.deltaY > threshold) {
+                window.location.reload();
+            }
+        });
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://v2.api-m.com/api/meinv");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                const response = JSON.parse(xhr.responseText);
+                console.log(response);
+                video.src = response.data;
+                video.load();
+                if (hasUserInteracted) {
+                    video.play().catch(error => {
+                        console.log('自动播放失败:', error);
+                    });
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>
+    

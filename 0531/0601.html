@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Video Player Buttons</title>
+<style>
+  /*{
+    margin: 0;
+    padding: 0;
+  }*/
+  .video-control {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+	
+  }
+  .video-control:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  /*.buns{
+    position: absolute;
+    top: 245px;
+    margin-left: 200px;
+  }
+  .box{
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    
+  }
+  .shipin{
+    margin-left: 200px;
+    width: 600px;
+    height: 600px;
+  }*/
+ 
+
+</style>
+</head>
+<body>
+ 
+<video id="myVideo" width="320" height="240" controls>
+  <source src="./video_1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video><br>
+
+<button class="video-control" id="open" onclick="playVideo()">播放</button>
+<button class="video-control" onclick="pauseVideo()">暂停</button>
+<button class="video-control" onclick="kuaijin()">快进</button>
+<button class="video-control" onclick="kuaitui()">快退</button>
+<button class="video-control" onclick="beisu()">2x</button>
+
+ 
+<script>
+  var video = document.getElementById("myVideo");
+  var open=document.getElementById("open").innerText;
+ 
+ 
+  function playVideo() {
+    if(video.paused){
+      video.play();
+      document.getElementById("open").innerText='暂停';
+    }else{
+     video.pause();
+     document.getElementById("open").innerText='播放';
+    } 
+  }
+ 
+ function pauseVideo() {
+ 
+    video.pause();
+    
+ }
+  function kuaijin(){
+    video.currentTime+=5;
+  }
+  function kuaitui(){
+	  video.currentTime-=5;
+  }
+  function beisu(){
+    
+  
+    video.playbackRate=2;
+
+  }
+ 
+
+</script>
+ 
+</body>
+</html>

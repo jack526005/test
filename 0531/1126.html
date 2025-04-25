@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: large;
+    }
+</style>
+<body>
+    
+    
+    <div></div>
+    <img alt="" width="50px">
+
+    <table id="myTable">
+    </table>
+
+    <script>
+        let table = document.querySelector('table');
+        let tb = `<tr>
+            <td><div><label ><input type="checkbox" id="cbx" >全选</label></div></td>
+            <td><div>商品</div></td>
+           
+            <td><div>单价</div></td>
+            <td><div>数量</div></td>
+            <td><div>总计</div></td>
+        </tr>`;
+        let proct = [
+            {name: 'opoo', price: 6999, count: 2, image: '1.png'},
+            {name: 'vivo', price: 2999, count: 3},
+            {name: 'Redmi', price: 2499, count: 2}
+        ];
+
+        for (let i = 0; i < proct.length; i++) {
+            let total = proct[i].price * proct[i].count;
+
+            tb += `<tr>
+                <td><div><input type="checkbox"></div></td>
+               
+                <td><div>${proct[i].name}</div></td>
+                <td><div>${proct[i].price}</div></td>
+                <td><div><button>-</button>${proct[i].count}<button>+</button></div></td>
+                <td><div>${total}</div></td>
+            </tr>`;
+        }
+
+        table.innerHTML = tb;
+        let sc=document.getElementById('cbx')
+        sc.onclick=function(){
+            
+                let cs=document.querySelectorAll('table tr td input')
+               
+              for (let scc of cs) {
+                scc.checked=sc.checked
+                
+              }
+            
+        }
+      
+    </script>
+</body>
+</html>
+

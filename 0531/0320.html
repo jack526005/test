@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div class="item1">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+        <div class="item4">4</div>
+        <div class="item5">5</div>
+        <div class="item6">6</div>
+        <div class="item7">7</div>
+        <div class="item8">8</div>
+        <div class="item9">9</div>
+    </div>
+    <style>
+        #box{
+            
+            display: grid;
+            grid-template-rows: repeat(3,100px);
+            grid-template-columns:repeat(3,100px); 
+            gap: 10px;
+            border: 5px solid greenyellow;
+            border-radius: 10px;
+            grid-auto-flow: column;
+            grid-auto-flow: row;
+            grid-auto-flow:row dense;
+            justify-items: stretch;
+            align-items: stretch;
+            justify-content: center;
+            justify-content: space-around;
+            justify-content: space-between;
+            justify-content: space-evenly;
+        
+           
+        }
+        .item1{
+            background-color: blue;
+           
+            
+        }
+        .item2{
+            background-color: greenyellow;
+        }
+        .item3{
+            background-color: lightblue;
+        }
+        .item4{
+            background-color: rgb(34, 141, 145);
+        }
+        .item5{
+            background-color: rgb(48, 15, 197);
+        }
+        .item6{
+            background-color: rgb(211, 159, 16);
+        }
+        .item7{
+            background-color: rgb(28, 116, 82);
+        }
+        .item8{
+            background-color: rgb(204, 47, 133);
+        }
+        .item9{
+            background-color: rgb(160, 216, 29);
+        }
+    </style>
+    
+</body>
+</html>

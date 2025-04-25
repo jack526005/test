@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #edf2f7;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="city" placeholder="请输入城市名" value="芜湖" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-300 ease-in-out">
+    <button onclick="sbm()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-300 ease-in-out">查询</button>
+    <h1 class="text-2xl font-bold mb-4">未来一周天气预报</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>时间</th>
+                <th>空气质量</th>
+                <th>温度</th>
+                <th>天气状况</th>
+                <th>风力</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- 表格数据将插入到这里 -->
+        </tbody>
+    </table>
+    <script>
+        // 页面加载完成后自动触发查询
+        window.onload = function () {
+            sbm();
+        };
+
+        function sbm() {
+            let city = document.getElementById('city');
+            console.log(city.value);
+            let chengshi = city.value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://v2.api-m.com/api/weather?city=" + chengshi, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        console.log(response.data.data);
+
+                        let tableBody = document.getElementById('tableBody');
+                        let tb = '';
+                        for (var i = 0; i < 6; i++) {
+                            tb += `<tr>
+                            <td>${response.data.data[i].date}</td>
+                            <td>${response.data.data[i].air_quality}</td>
+                            <td>${response.data.data[i].temperature}</td>
+                            <td>${response.data.data[i].weather}</td>
+                            <td>${response.data.data[i].wind}</td>
+                        </tr>`;
+                        }
+                        tableBody.innerHTML = tb;
+                    } else {
+                        console.error('请求失败，状态码: ', xhr.status);
+                    }
+                }
+            };
+
+            xhr.send();
+        }
+    </script>
+</html>    

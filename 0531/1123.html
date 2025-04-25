@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    	*{margin :0; padding:0;}
+			
+			#select-person-box{
+				text-align: center;
+			}
+			img{
+				width: 200px;
+				height: 200px;
+				border-radius: 100%;
+			}
+            button{
+                background-color: #456fff;
+    background-image: linear-gradient(90deg, #418eff, #4566ff);
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#418eff,endColorstr=#4566ff);
+    font-size: 17px;
+    height: 48px;
+    line-height: 48px;
+    margin: 20px auto 0;
+    text-align: center;
+    width: 180px;
+            }
+</style>
+<body>
+    <div id="select-person-box">
+        <h2>选人</h2>
+        <img id="person-image" src="" alt="">
+        <p id="person-name"></p>
+        <button id="button" onclick="ks2()" >开始选人</button>
+      
+    </div>
+    <script>
+        let stus = [{ 
+					name: '小张', 
+                    image:'1.png'
+				},
+				{
+					name: '小王',
+					image: '2.png'
+				},
+				{
+					name: '小赵',
+					image: '3.png'
+				},
+				{
+					name: '小李',
+					image: '4.png'
+				},
+				{
+					name: '图图',
+					image: '5.png'
+				},
+				{
+					name: '壮壮',
+					image: '6.png'
+				},
+				{
+					name: '老李',
+					image: '7.png'
+				},
+				{
+					name: '老王',
+					image: '8.png'
+				},
+				{
+					name: '小军',
+					image: '9.png'
+				},
+				{
+					name: '小明',
+					image: '10.png'
+				},
+				{
+					name: '军军',
+					image: '11.png'
+				}
+			]
+            function  chou(){
+				let count = stus.length
+				
+				let selectNum = Math.floor(Math.random()*count) +1				 
+				let pimage = document.querySelector('#person-image')
+				let pname = document.querySelector('#person-name')
+				let btn = document.querySelector('button')
+				pname.innerText = stus[selectNum-1].name
+				pimage.src =  'images\\' + stus[selectNum-1].image
+				btn.innerText = '继续选人'
+			}  
+			function ks2(){
+				let count = 0;
+
+                let intervalId = setInterval(function() {
+
+                count++;
+
+             chou()
+
+             if (count === 30) {
+
+             clearInterval(intervalId);  
+
+           }
+
+           }, 100);
+			}
+      
+            
+
+
+
+
+   
+
+
+          
+
+         
+          
+			
+    </script>
+
+    
+</body>
+</html>

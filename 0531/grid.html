@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">header
+          <a href="">首页</a>
+          <a href="">推荐</a>
+          <a href="">学习</a>
+          <a href="">影视</a>
+          <a href="">科技</a>
+          <a href="">新闻</a>
+          <form>
+            <input style="margin-top: 20px;" type="text"><input type="button" value="搜索">
+          </form>
+          
+          <a style="margin-left: auto;" href="">首页</a>
+          <a href="">-</a>
+          <a href="">我的</a>
+
+        </div>
+        <div class="sidebar">Sidebar</div>
+        
+        <div class="main">Main Content
+          <iframe width="100%" src="https://whit.fanya.chaoxing.com"></iframe>
+        </div>
+        <div class="right">Right</div>
+        <div class="footer">Footer</div>
+      </div>
+    
+</body>
+<style>
+    .container {
+      
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    "sidebar main main right"
+    "sidebar main main  right "
+    "footer footer footer footer";
+  grid-template-rows: 100px 100px 100px 100px;
+  grid-template-columns: 200px 200px 200px 200px;
+  grid-gap: 10px;
+}
+
+.header {
+  grid-area: header;
+  background-color: #ccc;
+  display: flex;
+  
+  
+}
+a{
+  display: inline-flex;
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+  height: 30px;
+  border: 5px solid yellow;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #ddd;
+ 
+}
+
+.main {
+  grid-area: main;
+  background-color: #eee;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #ccc;
+}
+.right{
+  grid-area: right;
+  background-color: #ccc;
+}
+</style>
+</html>

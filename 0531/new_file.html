@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+
+		}
+		table{
+			
+			
+			margin: 10px auto;
+			border-collapse: collapse;
+			background-color: antiquewhite;
+			font-size: large;
+			
+			
+		}
+		table th{
+			padding: 10px;
+		}
+	</style>
+	<body>
+		<table border="" cellspacing="" cellpadding="">
+			
+			
+		</table>
+		<script type="text/javascript">
+			
+			salary=29000
+			sxyj=4000
+			zxkc=2500
+			qzd=5000
+			yjre=0                                              //实扣税额
+			lastSe=0
+			
+			function calSlb(sr){
+				if(sr<=36000){
+					return [0.03,0]
+				}else if(sr>36000&&sr<=144000){
+					return [0.1,2520]
+				}else if(sr>144000&&sr<=300000){
+					return [0.2,16920]
+				}else if(sr>300000&&sr<=420000){
+					return [0.25,31920]
+				}else if(sr>420000&&sr<=660000){
+					return [0.3,52920]
+				}else if(sr>660000&&sr<=960000){
+					return [0.35,85920]
+				}else{
+					return [0.45,181920]
+				}
+				
+			}
+			 
+			 let html='<tr><th>月份</th><th>收入</th><th>三险一金</th><th>专项附加扣除</th><th>累计收入</th><th>累计三险一金</th><th>累计专项扣除</th><th>应纳税所得额</th><th>税率(%)</th><th>速算扣除数</th><th>应纳税额</th><th>已交税额</th><th>实扣税额</th></tr>'
+			for (let i = 1; i <=12; i++) {
+				ljsr=salary*i
+				zsr=(salary-sxyj-zxkc-qzd)*i
+				ljsxyj=sxyj*i
+				ljzxkc=zxkc*i
+				
+				
+				let [sl,sskcs]=calSlb(zsr)
+				console.log(sl)
+				
+				se=zsr*sl-sskcs
+				yjre = se - lastSe; 
+				lastSe = se;
+				if(i==1)
+				skre=0                                  //已交税额
+			skre=se-yjre
+				html+='<tr><th>'+i+'月</th><th>'+salary+'</th><th>'+sxyj+'</th><th>'+zxkc+'</th><th>'+ljsr+'</th><th>'+ljsxyj+'</th><th>'+ljzxkc+'</th><th>'+zsr+'</th><th>'+sl*100+'</th><th>'+sskcs+'</th><th>'+se+'</th><th>'+skre+'</th><th>'+yjre+'</th></tr>'
+			}
+		
+			
+			let table=document.querySelector('table')
+			table.innerHTML=html
+		</script>
+	</body>
+</html>
