@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <script src="../css/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/mine.css">
+</head>
+<body>
+    <!-- 导航栏：高亮“关于我”选项 -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center " href="index.html">
+                <img src="../image/logo.png" class="" alt="博客Logo" style="max-height: 40px; margin-right: 20px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link h5" href="index.html">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h5" href="recommend.html">推荐</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active h5 text-primary" href="mine.html">关于我</a>
+                    </li>
+                </ul>
+         
+                <div class="ml-3 d-none d-md-flex align-items-center">
+                    <a href="login.html" class="btn btn-outline-primary mr-2">登录</a>
+                    <a href="register.html" class="btn btn-primary mr-3">注册</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 核心内容区：关于我 -->
+    <div class="container my-5">
+        <!-- 页面标题 -->
+        <div class="text-center mb-6">
+            <h2>关于我</h2>
+            <p class="text-muted">记录技术成长，分享生活感悟</p>
+        </div>
+
+        <!-- 第一模块：个人信息卡片 -->
+        <div class="row justify-content-center mb-8">
+            <div class="col-lg-8 col-md-10">
+                <div class="card profile-card h-100">
+                    <div class="card-body p-5">
+                        <div class="d-flex flex-column md:flex-row align-items-center">
+                            <!-- 头像 -->
+                            <div class="mb-4 md:mb-0 md:mr-6">
+                                <img src="../image/toxiang.png" alt="个人头像" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover; border: 5px solid #f1f8ff;">
+                            </div>
+                            <!-- 基本信息 -->
+                            <div class="text-center md:text-left">
+                                <h3 class="card-title font-weight-bold mb-2">吴旭</h3>
+                                <p class="text-primary mb-3">前端开发学习者 | 技术博主</p>
+                                <p class="text-muted mb-4">
+                                    前端开发学习者，热爱技术分享与写作。<br>
+                                    坚信“技术源于生活，也服务于生活”，希望通过博客记录成长。
+                                </p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二模块：技能与经历 -->
+        <div class="row mb-8">
+            <!-- 技能展示 -->
+            <div class="col-lg-6 mb-6 md:mb-0">
+                <div class="card profile-card h-100">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h4 class="font-weight-bold">我的技能</h4>
+                    </div>
+                    <div class="card-body p-5">
+                        <h5 class="text-primary mb-3">技术能力</h5>
+                        <div class="mb-4">
+                            <span class="skill-tag">HTML5/CSS3</span>
+                            <span class="skill-tag">JavaScript(ES6+)</span>
+                            <span class="skill-tag">React/Vue</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Webpack/Vite</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">小程序开发</span>
+                            <span class="skill-tag">UI/UX设计</span>
+                        </div>
+                        <h5 class="text-primary mb-3">其他能力</h5>
+                        <div>
+                            <span class="skill-tag">技术文档写作</span>
+                            <span class="skill-tag">团队协作管理</span>
+                            <span class="skill-tag">线上分享演讲</span>
+                            <span class="skill-tag">Python数据分析</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 经历展示 -->
+            <div class="col-lg-6">
+                <div class="card profile-card h-100">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h4 class="font-weight-bold">我的经历</h4>
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="timeline">
+                            <!-- 经历1 -->
+                            <div class="mb-4">
+                                <h5 class="font-weight-bold">芜湖职业技术大学 | 前端开发学生</h5>
+                                <p class="text-muted mb-2">2023.09 - 至今</p>
+                                <p class="text-sm">通过在线课程系统学习 HTML、CSS、JavaScript 核心知识，掌握网页布局、DOM 操作、事件处理等基础技能，完成个人静态博客页面开发。
+深入研究 CSS3 特性（Flex/Grid 布局、动画过渡）和 ES6 + 语法，重构博客页面，优化响应式适配，实现移动端与 PC 端兼容。
+自学 Vue.js 框架，通过官方文档和实战教程，掌握组件化开发、路由配置、状态管理等核心概念，完成简易 Todo List、天气查询工具等小项目。</p>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三模块：博客说明与联系 -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card profile-card h-100">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h4 class="font-weight-bold">博客说明 & 联系我</h4>
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="mb-6">
+                            <h5 class="text-primary mb-3">博客定位</h5>
+                            <p class="text-muted">
+                                本博客创建于2025年，主要分享三方面内容：<br>
+                                1. 前端技术干货：包括框架实战、性能优化、工程化方案等；<br>
+                                2. 学习成长经验：涵盖编程学习方法、职场进阶技巧、踩坑总结；<br>
+                                3. 生活感悟：记录程序员的日常，分享效率工具、读书心得、旅行见闻。<br>
+                                坚持“每周更新1-2篇”，希望能和更多志同道合的朋友交流成长。
+                            </p>
+                        </div>
+                        <div>
+                            <h5 class="text-primary mb-3">联系我</h5>
+                            <p class="text-muted mb-3">如果您有技术交流、合作邀约或文章建议，欢迎通过以下方式联系我：</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-envelope text-primary mr-2"></i> 邮箱：3451853256@qq.com</li>
+                                <li class="mb-2"><i class="fas fa-phone text-primary mr-2"></i> 微信：13365570102</li>
+                                <li><i class="fas fa-map-marker-alt text-primary mr-2"></i> 城市：芜湖</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚：与其他页面保持一致 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 我的博客网站 | 专注分享技术与生活</p>
+            <p class="mt-2">
+                <a href="#" class="text-muted mx-2">关于本站</a>
+                <a href="#" class="text-muted mx-2">联系方式</a>
+                <a href="#" class="text-muted mx-2">隐私政策</a>
+            </p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

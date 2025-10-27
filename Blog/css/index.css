@@ -1,0 +1,16 @@
+      .footer {
+            background-color: #f8f9fa; 
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer a.text-muted {
+            color: #6c757d !important; 
+        }
+        .article-card {
+            cursor: pointer; 
+            transition: transform 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px); 
+        }

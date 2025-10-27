@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <script src="../css/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <script src="../js/detail.js"></script>
+   <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center " href="index.html">
+                <img src="../image/logo.png" class="" alt="博客Logo" style="max-height: 40px; margin-right: 20px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto ">
+                    <li class="nav-item ">
+                        <a class="nav-link h5" href="index.html">主页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h5" href="recommend.html">推荐</a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link h5" href="mine.html">关于我</a>
+                    </li>
+                </ul>
+           
+                <div class="ml-3 d-none d-md-flex align-items-center">
+                    <a href="login.html" class="btn btn-outline-primary mr-2">登录</a>
+                    <a href="register.html" class="btn btn-primary mr-3">注册</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="article-detail-container">
+      
+            <a href="index.html" class="back-btn btn btn-outline-secondary">← 返回主页</a>
+
+         
+            <div id="loading" class="loading">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">加载中...</span>
+                </div>
+                <p class="mt-3">正在加载文章内容...</p>
+            </div>
+
+ 
+            <div id="error" class="error" style="display: none;">
+                <h3>文章不存在或已删除</h3>
+                <p class="mt-3">请检查文章ID是否正确，或返回列表页重新选择</p>
+                <a href="index.html" class="btn btn-primary mt-2">返回列表</a>
+            </div>
+
+         
+            <div id="articleContent" style="display: none;">
+             
+                <h1 class="article-title" id="articleTitle"></h1>
+
+              
+                <div class="article-meta">
+                    <span id="articleDate"></span> · 
+                    <span id="articleAuthor">作者：博客管理员</span>
+                </div>
+
+                <div id="articleTags" class="mb-4"></div>
+
+         >
+                <img id="articleImg" class="article-image" src="" alt="文章封面">
+
+           
+                <div class="article-content" id="articleBody"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 我的博客网站 | 专注分享技术与生活</p>
+            <p class="mt-2">
+                <a href="#" class="text-muted mx-2">关于本站</a>
+                <a href="#" class="text-muted mx-2">联系方式</a>
+                <a href="#" class="text-muted mx-2">隐私政策</a>
+            </p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

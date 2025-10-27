@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="../js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <script src="../css/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <script src="../js/register.js"></script>
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+
+<body>
+    
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container">
+    <!-- 品牌Logo -->
+    <a class="navbar-brand d-flex align-items-center " href="index.html">
+      <img src="../image/logo.png" class="" alt="博客Logo" style="max-height: 40px; margin-right: 20px;">
+    </a>
+    
+    <!-- 汉堡菜单按钮 -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- 导航内容 -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item ">
+          <a class="nav-link  h5" href="index.html">主页</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link h5" href="recommend.html">推荐</a>
+        </li>
+ 
+        <li class="nav-item">
+          <a class="nav-link h5" href="mine.html">关于我</a>
+        </li>
+      </ul>
+      <div class="ml-3 d-none d-md-flex align-items-center">
+        <a href="login.html" class="btn btn-outline-primary mr-2">登录</a>
+        <a href="register.html" class="btn btn-primary mr-3">注册</a>
+      
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+        <div class="login-box">
+            <h3 class="text-center mb-4">注册</h3>
+            
+            <form id="loginForm">
+                <!-- 用户名 -->
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control" id="username" placeholder="请输入用户名" >
+                </div>
+                
+                <!-- 密码 -->
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="password" placeholder="请输入密码" >
+                </div>
+                
+                <!-- 登录按钮 -->
+                <button type="button" class="btn btn-primary btn-block" onclick="register()">注册</button>
+                
+                <!-- 辅助链接 -->
+                <div class="text-center mt-3">
+                    <span>已有账号?</span>
+                    <span class="mx-2">|</span>
+                    <a href="login.html" class="text-muted">去登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 我的博客网站 | 专注分享技术与生活</p>
+        <p class="mt-2">
+            <a href="#" class="text-muted mx-2">关于本站</a>
+            <a href="#" class="text-muted mx-2">联系方式</a>
+            <a href="#" class="text-muted mx-2">隐私政策</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
