@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background-color: #f5f5f5;
+        }
+        .todo-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .add-todo {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        #todo-title {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        #todo-title:focus {
+            outline: none;
+            border-color: #4285f4;
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        .add-btn {
+            background-color: #4285f4;
+            color: white;
+        }
+        .add-btn:hover {
+            background-color: #3367d6;
+        }
+        .todo-list {
+            list-style: none;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+        .todo-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .todo-checkbox {
+            width: 1.25rem;
+            height: 1.25rem;
+            cursor: pointer;
+        }
+        .todo-text {
+            font-size: 1rem;
+            color: #333;
+            transition: text-decoration 0.2s, color 0.2s;
+        }
+        .todo-text.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .todo-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .edit-btn {
+            background-color: #fbbc05;
+            color: white;
+        }
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+        .delete-btn {
+            background-color: #ea4335;
+            color: white;
+        }
+        .delete-btn:hover {
+            background-color: #d93025;
+        }
+        .edit-input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            width: 200px;
+        }
+        .edit-input:focus {
+            outline: none;
+            border-color: #4285f4;
+        }
+        .save-btn {
+            background-color: #34a853;
+            color: white;
+        }
+        .save-btn:hover {
+            background-color: #2d8645;
+        }
+        .cancel-btn {
+            background-color: #9aa0a6;
+            color: white;
+        }
+        .cancel-btn:hover {
+            background-color: #8d9096;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .error-message {
+            color: #ea4335;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>待办事项列表</h1>
+        
+        <div class="add-todo">
+            <input type="text" id="todo-title" placeholder="请输入待办事项标题...">
+            <button class="add-btn" id="add-btn">添加</button>
+            <div class="error-message" id="add-error"></div>
+        </div>
+
+        <ul class="todo-list" id="todo-list">
+            <!-- 待办事项会动态渲染到这里 -->
+        </ul>
+    </div>
+
+    <script>
+        // DOM 元素
+        const todoListEl = document.getElementById('todo-list');
+        const todoTitleInput = document.getElementById('todo-title');
+        const addBtn = document.getElementById('add-btn');
+        const addErrorEl = document.getElementById('add-error');
+
+        // 后端 API 基础 URL
+        const API_BASE_URL = 'http://localhost:3000/api/todos';
+
+        // 页面加载时获取所有待办事项
+        document.addEventListener('DOMContentLoaded', fetchTodos);
+
+        // 添加待办事项按钮点击事件
+        addBtn.addEventListener('click', addTodo);
+
+        // 按回车键添加待办事项
+        todoTitleInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTodo();
+        });
+
+        // 获取所有待办事项
+        async function fetchTodos() {
+            try {
+                const response = await fetch(API_BASE_URL);
+                if (!response.ok) throw new Error('获取待办事项失败');
+                
+                const todos = await response.json();
+                renderTodos(todos);
+            } catch (error) {
+                console.error('获取待办事项出错:', error);
+                showEmptyState();
+            }
+        }
+
+        // 渲染待办事项列表
+        function renderTodos(todos) {
+            // 清空列表
+            todoListEl.innerHTML = '';
+
+            // 空状态处理
+            if (todos.length === 0) {
+                showEmptyState();
+                return;
+            }
+
+            // 渲染每个待办事项
+            todos.forEach(todo => {
+                const todoItemEl = createTodoItemElement(todo);
+                todoListEl.appendChild(todoItemEl);
+            });
+        }
+
+        // 创建单个待办事项元素
+        function createTodoItemElement(todo) {
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            li.dataset.id = todo.id;
+
+            // 待办事项内容（复选框 + 文本）
+            const todoContent = document.createElement('div');
+            todoContent.className = 'todo-content';
+
+            // 复选框
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'todo-checkbox';
+            checkbox.checked = todo.completed;
+            // 复选框状态改变事件
+            checkbox.addEventListener('change', () => toggleTodoCompleted(todo.id, checkbox.checked));
+
+            // 待办文本
+            const todoText = document.createElement('span');
+            todoText.className = `todo-text ${todo.completed ? 'completed' : ''}`;
+            todoText.textContent = todo.title || todo.task; // 兼容后端的字段错误（title/task）
+
+            // 操作按钮组
+            const actions = document.createElement('div');
+            actions.className = 'todo-actions';
+
+            // 编辑按钮
+            const editBtn = document.createElement('button');
+            editBtn.className = 'edit-btn';
+            editBtn.textContent = '编辑';
+            editBtn.addEventListener('click', () => enterEditMode(todo.id, li, todo.title || todo.task));
+
+            // 删除按钮
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.textContent = '删除';
+            deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
+
+            // 组装元素
+            todoContent.appendChild(checkbox);
+            todoContent.appendChild(todoText);
+            actions.appendChild(editBtn);
+            actions.appendChild(deleteBtn);
+            li.appendChild(todoContent);
+            li.appendChild(actions);
+
+            return li;
+        }
+
+        // 显示空状态
+        function showEmptyState() {
+            todoListEl.innerHTML = `
+                <li class="empty-state">
+                    暂无待办事项，添加你的第一个待办吧！
+                </li>
+            `;
+        }
+
+        // 添加新待办事项
+        async function addTodo() {
+            const title = todoTitleInput.value.trim();
+            addErrorEl.textContent = '';
+
+            // 验证输入
+            if (!title) {
+                addErrorEl.textContent = '请输入待办事项标题';
+                return;
+            }
+
+            try {
+                const response = await fetch(API_BASE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title }),
+                });
+
+                if (!response.ok) throw new Error('添加待办事项失败');
+
+                // 清空输入框并重新获取列表
+                todoTitleInput.value = '';
+                fetchTodos();
+            } catch (error) {
+                console.error('添加待办事项出错:', error);
+                addErrorEl.textContent = '添加失败，请重试';
+            }
+        }
+
+        // 切换待办事项完成状态
+        async function toggleTodoCompleted(id, completed) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ completed }),
+                });
+
+                if (!response.ok) throw new Error('更新待办事项状态失败');
+
+                // 更新UI（也可以重新获取列表，这里直接更新当前元素）
+                const todoItemEl = document.querySelector(`.todo-item[data-id="${id}"]`);
+                const todoTextEl = todoItemEl.querySelector('.todo-text');
+                todoTextEl.classList.toggle('completed', completed);
+            } catch (error) {
+                console.error('更新待办事项状态出错:', error);
+                // 恢复复选框状态
+                const checkbox = document.querySelector(`.todo-item[data-id="${id}"] .todo-checkbox`);
+                checkbox.checked = !completed;
+                alert('更新状态失败，请重试');
+            }
+        }
+
+        // 进入编辑模式
+        function enterEditMode(id, todoItemEl, currentTitle) {
+            // 获取待办内容容器
+            const todoContentEl = todoItemEl.querySelector('.todo-content');
+            const actionsEl = todoItemEl.querySelector('.todo-actions');
+
+            // 创建编辑输入框
+            const editInput = document.createElement('input');
+            editInput.type = 'text';
+            editInput.className = 'edit-input';
+            editInput.value = currentTitle;
+
+            // 清空原有内容
+            todoContentEl.innerHTML = '';
+            todoContentEl.appendChild(editInput);
+
+            // 替换操作按钮为保存/取消
+            actionsEl.innerHTML = '';
+
+            // 保存按钮
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'save-btn';
+            saveBtn.textContent = '保存';
+            saveBtn.addEventListener('click', () => saveEditedTodo(id, editInput.value, todoItemEl));
+
+            // 取消按钮
+            const cancelBtn = document.createElement('button');
+            cancelBtn.className = 'cancel-btn';
+            cancelBtn.textContent = '取消';
+            cancelBtn.addEventListener('click', () => fetchTodos());
+
+            // 添加按钮到操作区
+            actionsEl.appendChild(saveBtn);
+            actionsEl.appendChild(cancelBtn);
+
+            // 聚焦输入框
+            editInput.focus();
+
+            // 按回车键保存，ESC键取消
+            editInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') saveEditedTodo(id, editInput.value, todoItemEl);
+            });
+            editInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') fetchTodos();
+            });
+        }
+
+        // 保存编辑后的待办事项
+        async function saveEditedTodo(id, newTitle, todoItemEl) {
+            const title = newTitle.trim();
+
+            // 验证输入
+            if (!title) {
+                alert('标题不能为空');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/${id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title }), // 注意：后端代码中错误地使用了 task 字段，这里兼容
+                });
+
+                if (!response.ok) throw new Error('更新待办事项失败');
+
+                // 重新获取列表
+                fetchTodos();
+            } catch (error) {
+                console.error('编辑待办事项出错:', error);
+                alert('保存失败，请重试');
+            }
+        }
+
+        // 删除待办事项
+        async function deleteTodo(id) {
+            if (!confirm('确定要删除这个待办事项吗？')) return;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/${id}`, {
+                    method: 'DELETE',
+                });
+
+                if (!response.ok) throw new Error('删除待办事项失败');
+
+                // 重新获取列表
+                fetchTodos();
+            } catch (error) {
+                console.error('删除待办事项出错:', error);
+                alert('删除失败，请重试');
+            }
+        }
+    </script>
+</body>
+</html>
