@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    nav{
+        width: 100%;
+      
+        background-color:#3a3737;
+       
+    }
+        /* 导航三段布局：左 / 中(ul) / 右 */
+        nav .nav-inner{
+            max-width:1100px;
+            margin:0 auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 12px
+        }
+        .nav-left,.nav-right{
+            display:flex;
+            align-items:center;
+            gap:12px
+        }
+
+        .nav-center{
+            flex:1;
+            display:flex;
+            justify-content:center
+        }
+        .nav-center ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center}
+    li{
+        color: #fff;
+        padding: 15px 20px;
+        cursor: pointer;
+    }
+    li:hover{
+        background-color: #575252;
+    }
+</style>
+<body>
+        <nav>
+            <div class="nav-inner">
+                <div class="nav-left">
+                    <!-- 左侧：放 logo 或登录等 -->
+                    <img src="logo.png" alt="Logo" style="height:40px;">
+                </div>
+
+                <div class="nav-center">
+                    <ul>
+                        <li>首页</li>
+                        <li>产品</li>
+                        <li>关于我们</li>
+                        <li>服务</li>
+                        <li>联系我们</li>
+                        <li>帮助中心</li>
+                        <li>更多</li>
+                    </ul>
+                </div>
+
+                <div class="nav-right">
+                    <!-- 右侧：放搜索/购物车/按钮等 -->
+                    <span style="color:#fff;padding:0 8px">登录</span>
+                    <span style="color:#fff;padding:0 8px">注册</span>
+                </div>
+            </div>
+        </nav>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .photos{
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+    top:100px;
+
+    }
+    .photo{
+        width: 120px;
+        height: 120px;
+        background-color: lightblue;
+        position: absolute;
+        /* 以元素中心为定位基准 */
+        transform: translate(-50%, -50%);
+        border-radius: 8px;
+        overflow: hidden;
+        display: block;
+    }
+
+    /* 10 个点位，近似心形分布（百分比相对于 .photos 容器） */
+    .photo:nth-child(1){ left:50%; top:18%;background: url('./1.jpg'); background-size: cover;}   /* 心尖上部中心 */
+    .photo:nth-child(2){ left:62%; top:12%; background: url('./2.jpg'); background-size: cover;}
+    .photo:nth-child(3){ left:74%; top:24%; background: url('./3.jpg'); background-size: cover;}
+    .photo:nth-child(4){ left:82%; top:42%;  background: url('./4.jpg');background-size: cover; }
+    .photo:nth-child(5){ left:74%; top:62%;  background: url('./5.jpg');background-size: cover; }
+    .photo:nth-child(6){ left:50%; top:80%; background: url('./6.jpg'); background-size: cover;}   /* 心底 */
+    .photo:nth-child(7){ left:26%; top:62%;  background: url('./7.jpg');background-size: cover; }
+    .photo:nth-child(8){ left:18%; top:42%;  background: url('./8.jpg');background-size: cover; }
+    .photo:nth-child(9){ left:26%; top:24%; background: url('./9.jpg');background-size: cover; }
+    .photo:nth-child(10){ left:38%; top:12%; background: url('./10.jpg');background-size: cover; }
+    .photo:hover{
+        z-index: 10;
+        width: 200px;
+        height: 200px;
+        transition: all 0.3s ease;
+    }
+      
+</style>
+<body>
+    
+    <div class="photos">
+        <div class="photo"></div>
+        <div class="photo"></div>
+        <div class="photo"></div>
+        <div class="photo"></div>
+        <div class="photo"></div>
+          <div class="photo"></div>
+        <div class="photo"></div>
+        <div class="photo"></div>
+        <div class="photo"></div>
+        <div class="photo"></div>
+    </div>
+</body>
+</html>
