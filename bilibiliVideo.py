@@ -35,7 +35,10 @@ def setup_driver():
 
     try:
         # 自动下载和管理 ChromeDriver
-        service = Service(ChromeDriverManager().install())
+        chromedriver_path = r"D:\chromedriver-win64\chromedriver.exe"  # 重点改这里！
+        # 2. 创建 Service 对象，传入手动路径
+        service = Service(executable_path=chromedriver_path)
+        # 3. 初始化驱动
         driver = webdriver.Chrome(service=service, options=chrome_options)
 
         # 进一步隐藏自动化特征
